@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, Newspaper, ThumbsUp, MessageCircle, X, Menu, Briefcase, Users, Star} from 'lucide-react';
+import { ArrowRight, Briefcase, Users, Star} from 'lucide-react';
+import person from '../assets/person1.webp'
 
 // ==========================
 // File: src/pages/AboutPage.jsx
@@ -12,9 +13,9 @@ const teamMembers = [
     imageUrl: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzR8MHwxfHNlYXJjaHw3fHxtYWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNjcwOTM0NjE2&ixlib=rb-4.0.3&q=80&w=1080',
   },
   {
-    name: 'Hernanda Adi',
+    name: 'Sandeep Vishwakarma',
     role: 'Web Developer',
-    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageUrl: person,
   },
   {
     name: 'Irman Maulana',
