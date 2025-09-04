@@ -1,71 +1,91 @@
-// src/components/Header.jsx
-import React, { useState } from 'react';
-import { Menu, X, Home, Info, Briefcase, Mail, Newspaper } from 'lucide-react';
+import React, { useState } from "react";
+import { X, Menu } from "lucide-react";
 
-export  const Header = ({ currentPage, setPage }) => {
+export const Header = ({ currentPage, setPage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Simplified nav links based on user request
   const navLinks = [
-    { name: 'Home', page: 'home' },
-    { name: 'About', page: 'about' },
-    { name: 'Contact', page: 'contact' },
+    { name: "Home", page: "home" },
+    { name: "About", page: "about" },
+    { name: "Services", page: "services" },
+    { name: "Blog", page: "blog" },
+    { name: "FAQ", page: "faq" },
+    { name: "Contact", page: "contact" },
   ];
 
   const handleLinkClick = (page) => {
     setPage(page);
-    setIsOpen(false);
+    setIsOpen(false); // close menu after selecting
   };
 
   return (
     <header className="bg-white text-gray-800 shadow-xl sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        {/* Logo */}
         <div className="flex items-center">
-          <Newspaper className="mr-3 text-blue-600 animate-pulse-slow" size={32} />
-          <span className="text-2xl font-bold font-['Inter']">NewsHub</span>
+          <img
+            src="https://placehold.co/40x40/5e5e5e/ffffff?text=LOGO"
+            alt="NewsHub Logo"
+            className="h-8 w-8 sm:h-10 sm:w-10 rounded-full mr-3"
+          />
+          <span className="text-xl sm:text-2xl font-bold font-['Inter']">
+            AzamgarhNews
+          </span>
         </div>
 
-        <nav className="hidden md:flex space-x-4 lg:space-x-6 text-sm">
+        {/* Desktop Navigation */}
+        <nav
+          className="hidden md:flex space-x-4 lg:space-x-6 text-sm lg:text-base"
+          aria-label="Main navigation"
+        >
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
               onClick={() => handleLinkClick(link.page)}
-              className={`font-semibold cursor-pointer transition-colors duration-300 hover:text-blue-600 ${
-                currentPage === link.page ? 'text-blue-600' : ''
+              className={`font-semibold px-2 py-1 transition duration-300 hover:text-blue-600 ${
+                currentPage === link.page ? "text-blue-600" : ""
               }`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
         </nav>
 
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800 focus:outline-none">
+        {/* Mobile Menu Icon */}
+        <div className="flex md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-800 focus:outline-none"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      <nav
-        className={`md:hidden bg-gray-50 absolute w-full transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-y-0' : '-translate-y-full'
+      {/* Fullscreen Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-white z-50 flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <ul className="flex flex-col py-4">
+        <ul className="space-y-6 text-center">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a
+              <button
                 onClick={() => handleLinkClick(link.page)}
-                className={`flex items-center p-4 text-lg cursor-pointer transition-colors duration-300 hover:bg-gray-200 ${
-                  currentPage === link.page ? 'text-blue-600 font-bold' : ''
+                className={`text-2xl sm:text-3xl font-bold transition-colors duration-300 hover:text-blue-600 ${
+                  currentPage === link.page ? "text-blue-600" : ""
                 }`}
               >
-                <span className="ml-3">{link.name}</span>
-              </a>
+                {link.name}
+              </button>
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
     </header>
   );
 };
+
+export default Header;

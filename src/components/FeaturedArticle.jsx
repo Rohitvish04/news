@@ -1,11 +1,11 @@
 import { ArrowRight } from 'react-feather';
 
 export const FeaturedArticle = ({ article }) => (
-  <div className="relative mb-8 overflow-hidden animate-fade-in">
+  <div className="relative mb-8 overflow-hidden animate-fade-in ">
     <img
       src={article.image}
       alt={article.title}
-      className="w-full h-96 object-cover rounded-3xl"
+      className="w-full h-96 object-cover rounded-3xl "
     />
     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent flex items-end p-8 md:p-12 lg:p-16">
       <div className="text-white">
