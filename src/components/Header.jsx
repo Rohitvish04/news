@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { X, Menu } from "lucide-react";
+import logo from "../assets/logo1.webp"; // <-- import your uploaded logo
 
 export const Header = ({ currentPage, setPage }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,18 +16,18 @@ export const Header = ({ currentPage, setPage }) => {
 
   const handleLinkClick = (page) => {
     setPage(page);
-    setIsOpen(false); // close menu after selecting
+    setIsOpen(false);
   };
 
   return (
     <header className="bg-white text-gray-800 shadow-xl sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo + Site Name */}
         <div className="flex items-center">
           <img
-            src="https://placehold.co/40x40/5e5e5e/ffffff?text=LOGO"
-            alt="NewsHub Logo"
-            className="h-8 w-8 sm:h-10 sm:w-10 rounded-full mr-3"
+            src={logo}
+            alt="AzamgarhNews Logo"
+            className="h-10 w-auto sm:h-12 mr-3"
           />
           <span className="text-xl sm:text-2xl font-bold font-['Inter']">
             AzamgarhNews
